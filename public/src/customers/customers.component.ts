@@ -1,4 +1,4 @@
-import { Component, Input } from "@angular/core";
+import { Component, Input, OnInit } from "@angular/core";
 import { downgradeComponent } from "@angular/upgrade/static";
 
 declare var angular: angular.IAngularStatic;
@@ -13,8 +13,8 @@ import { CustomerService } from "./customer.service";
   selector: "customers",
   template,
 })
-export class CustomersComponent {
-  public title = "Customers";
+export class CustomersComponent implements OnInit {
+  public title: string = "Customers";
   public customers: Customer[];
 
   constructor(private customerService: CustomerService) {}

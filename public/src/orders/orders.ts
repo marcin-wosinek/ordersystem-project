@@ -1,9 +1,6 @@
-//Don't forget to import lodash
 import * as _ from "lodash";
-
-import { from, forkJoin } from "rxjs";
-
 import { CustomerService } from "../customers/customer.service";
+import { Observable, forkJoin, from } from "rxjs";
 
 const template = require("./orders.html");
 
@@ -13,17 +10,21 @@ const ordersComponent = {
   controller: ordersComponentController,
 };
 
-ordersComponentController.$inject = ["orderService", "customerService"];
+ordersComponentController.$inject = [
+  "orderService",
+  "customerService",
+  "$location",
+];
 function ordersComponentController(
   orderService,
-  customerService: CustomerService
+  customerService: CustomerService,
+  $location
 ) {
   var vm = this;
   vm.title = "Orders";
 
   vm.$onInit = function () {
     let ordersData = from(orderService.getOrders());
-
     forkJoin([ordersData, customerService.getCustomers()]).subscribe((data) => {
       vm.orders = data[0];
       vm.customers = data[1];
@@ -34,6 +35,10 @@ function ordersComponentController(
         order.customerName = customer.fullName;
       });
     });
+  };
+
+  vm.goToCreateOrder = () => {
+    $location.path("/orders/create");
   };
 }
 

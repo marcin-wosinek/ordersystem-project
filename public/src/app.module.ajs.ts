@@ -14,12 +14,15 @@ import customerDetailComponent from "./customerDetail/customerDetail";
 import discountComponent from "./customerDetail/discount";
 import validateDateDirective from "./directives/validateDate";
 import ordersComponent from "./orders/orders";
+import createOrderComponent from "./createOrder/createOrder";
 import orderDetailComponent from "./orderDetail/orderDetail";
 import productsComponent from "./products/products";
 import productDetailComponent from "./productDetail/productDetail";
 import AddressService from "./shared/addressService";
-import OrderService from "./orders/orderService";
 import ProductService from "./products/productService";
+import "bootstrap/dist/css/bootstrap.min.css";
+import "font-awesome/css/font-awesome.min.css";
+import "./styles/app.scss";
 
 const MODULE_NAME = "app";
 
@@ -34,9 +37,9 @@ angular
   .component("orderDetail", orderDetailComponent)
   .component("products", productsComponent)
   .component("productDetail", productDetailComponent)
-  .directive("validateDate", validateDateDirective)
   .service("addressService", AddressService)
-  .service("orderService", OrderService)
-  .service("productService", ProductService);
+  .service("productService", ProductService)
+  .component("createOrder", createOrderComponent)
+  .directive("validateDate", validateDateDirective);
 
 export default MODULE_NAME;
