@@ -1,7 +1,7 @@
 //Don't forget to import lodash
 import * as _ from "lodash";
 
-import { first } from "rxjs/operators";
+import { from, forkJoin } from "rxjs";
 
 import { CustomerService } from "../customers/customer.service";
 
@@ -13,21 +13,18 @@ const ordersComponent = {
   controller: ordersComponentController,
 };
 
-ordersComponentController.$inject = ["orderService", "customerService", "$q"];
+ordersComponentController.$inject = ["orderService", "customerService"];
 function ordersComponentController(
   orderService,
-  customerService: CustomerService,
-  $q
+  customerService: CustomerService
 ) {
   var vm = this;
   vm.title = "Orders";
 
   vm.$onInit = function () {
-    let promises = [
-      orderService.getOrders(),
-      customerService.getCustomers().pipe(first()).toPromise(),
-    ];
-    return $q.all(promises).then((data) => {
+    let ordersData = from(orderService.getOrders());
+
+    forkJoin([ordersData, customerService.getCustomers()]).subscribe((data) => {
       vm.orders = data[0];
       vm.customers = data[1];
       vm.orders.forEach(function (order) {
