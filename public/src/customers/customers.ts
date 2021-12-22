@@ -1,21 +1,24 @@
-const template = require('./customers.html');
+const template = require("./customers.html");
 
 const customersComponent = {
-    template: template,
-    bindings: {},
-    controller: customersComponentController
+  template: template,
+  bindings: {},
+  controller: customersComponentController,
 };
 
-customersComponentController.$inject = ['customerService', ];
-function customersComponentController(customerService){
-    var vm = this;
-    vm.title = 'Customers';
+import { CustomerService } from "./customer.service";
 
-    vm.$onInit = () => {
-        customerService.getCustomers().then((data) => {
-            vm.customers = data;
-        });
-    };
+customersComponentController.$inject = ["customerService"];
+function customersComponentController(customerService: CustomerService) {
+  var vm = this;
+  vm.title = "Customers";
+
+  vm.$onInit = () => {
+    customerService.getCustomers().subscribe((data) => {
+      vm.customers = data;
+    });
+  };
 }
 
 export default customersComponent;
+
