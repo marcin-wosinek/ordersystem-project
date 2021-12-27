@@ -11,7 +11,7 @@ const template = require("./customers-table.html");
   selector: "customers-table",
   template,
 })
-export class CustomersTable {
+export class CustomersTableComponent {
   @Input() customers: Customer[];
 
   constructor() {}
@@ -20,6 +20,6 @@ export class CustomersTable {
 angular.module("app").directive(
   "customersTable",
   downgradeComponent({
-    component: CustomersTable,
+    component: CustomersTableComponent,
   }) as angular.IDirectiveFactory
 );
