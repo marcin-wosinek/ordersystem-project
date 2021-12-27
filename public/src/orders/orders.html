@@ -17,7 +17,7 @@
       </div>
       <button
         type="button"
-        data-ng-click="goToCreateOrder()"
+        (click)="goToCreateOrder()"
         class="btn btn-info"
       >
         Create Order
@@ -32,64 +32,60 @@
         <tr>
           <th>
             <a
-              href=""
-              data-ng-click="sortType = 'orderId'; sortReverse = !sortReverse"
+              (click)="sortOrders('id')"
             >
               Order Id
               <span
-                data-ng-show="sortType == 'orderId' && !sortReverse"
+                *ngIf="sortType == 'id' && !sortReverse"
                 class="fa fa-caret-down"
               ></span>
               <span
-                data-ng-show="sortType == 'orderId' && sortReverse"
+                *ngIf="sortType == 'id' && sortReverse"
                 class="fa fa-caret-up"
               ></span>
             </a>
           </th>
           <th>
             <a
-              href=""
-              data-ng-click="sortType = 'customername'; sortReverse = !sortReverse"
+              (click)="sortOrders('customerName')"
             >
               Customer Name
               <span
-                data-ng-show="sortType == 'customername' && !sortReverse"
+                *ngIf="sortType == 'customerName' && !sortReverse"
                 class="fa fa-caret-down"
               ></span>
               <span
-                data-ng-show="sortType == 'customername' && sortReverse"
+                *ngIf="sortType == 'customerName' && sortReverse"
                 class="fa fa-caret-up"
               ></span>
             </a>
           </th>
           <th>
             <a
-              href=""
-              data-ng-click="sortType = 'totalItems'; sortReverse = !sortReverse"
+              (click)="sortOrders('totalItems')"
             >
               Total Items
               <span
-                data-ng-show="sortType == 'totalItems' && !sortReverse"
+                *ngIf="sortType == 'totalItems' && !sortReverse"
                 class="fa fa-caret-down"
               ></span>
               <span
-                data-ng-show="sortType == 'totalItems' && sortReverse"
+                *ngIf="sortType == 'totalItems' && sortReverse"
                 class="fa fa-caret-up"
               ></span>
             </a>
           </th>
           <th>
             <a
-              href=""
-              data-ng-click="sortType = 'totalSale'; sortReverse = !sortReverse"
+              (click)="sortOrders('totalSale')"
             >
               Total Sale
               <span
-                data-ng-show="sortType == 'totalSale' && !sortReverse"
+                *ngIf="sortType == 'totalSale' && !sortReverse"
                 class="fa fa-caret-down"
               ></span>
               <span
-                data-ng-show="sortType == 'totalSale' && sortReverse"
+                *ngIf="sortType == 'totalSale' && sortReverse"
                 class="fa fa-caret-up"
               ></span>
             </a>
@@ -106,7 +102,7 @@
         -->
 
           <td>
-            <a [href]="'#/orders/' + order.id">{{ order.id }}</a>
+            <a href="#/orders/{{order.id}}">{{ order.id }}</a>
           </td>
           <td>{{ order.customerName }}</td>
           <td>{{ order.totalItems }}</td>

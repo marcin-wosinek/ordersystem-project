@@ -23,6 +23,9 @@ export class OrdersComponent implements OnInit {
   public customers: Customer[];
   public title: string = "Orders";
 
+  public sortType: string;
+  private sortReverse: boolean = false;
+
   constructor(
     private orderService: OrderService,
     private customerService: CustomerService,
@@ -41,12 +44,36 @@ export class OrdersComponent implements OnInit {
           });
           order.customerName = customer.fullName;
         });
+
+        this.sortOrders("id");
       }
     );
   }
 
   goToCreateOrder() {
     this.$location.path("/orders/create");
+  }
+
+  dynamicSort(property) {
+    let sortOrder = -1;
+
+    if (this.sortReverse) {
+      sortOrder = 1;
+    }
+
+    return function (a, b) {
+      let result =
+        a[property] < b[property] ? -1 : a[property] > b[property] ? 1 : 0;
+
+      return result * sortOrder;
+    };
+  }
+
+  sortOrders(property) {
+    this.sortType = property;
+    this.sortReverse = !this.sortReverse;
+
+    this.orders.sort(this.dynamicSort(property));
   }
 }
 
