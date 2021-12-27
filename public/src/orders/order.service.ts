@@ -47,4 +47,3 @@ export class OrderService {
 angular
   .module("app")
   .factory("orderService", downgradeInjectable(OrderService));
-
