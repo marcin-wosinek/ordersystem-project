@@ -8,10 +8,11 @@
         <div class="input-group">
           <div class="input-group-addon"><i class="fa fa-search"></i></div>
           <input
+            #ordersFilter
             type="text"
             class="form-control"
             placeholder="Filter Orders"
-            data-ng-model="filterOrders"
+            (keyup)="filterOrders(ordersFilter.value)"
           />
         </div>
       </div>
@@ -94,13 +95,8 @@
       </thead>
       <tbody>
         <tr
-          *ngFor="let order of orders"
+          *ngFor="let order of filteredOrders"
         >
-
-        <!-- 
-          *ngFor="let order of orders | orderBy:sortType:sortReverse | filter:filterOrders"
-        -->
-
           <td>
             <a href="#/orders/{{order.id}}">{{ order.id }}</a>
           </td>

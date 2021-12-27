@@ -17,9 +17,11 @@ import { Order } from "./order.interface";
 @Component({
   selector: "customers",
   template,
+  styles: ["tr a { cursor: pointer }"],
 })
 export class OrdersComponent implements OnInit {
   public orders: Order[];
+  public filteredOrders: Order[];
   public customers: Customer[];
   public title: string = "Orders";
 
@@ -37,6 +39,7 @@ export class OrdersComponent implements OnInit {
     forkJoin([ordersData, this.customerService.getCustomers()]).subscribe(
       (data) => {
         this.orders = data[0];
+        this.filteredOrders = data[0];
         this.customers = data[1];
         this.orders.forEach((order: Order) => {
           var customer = _.find(this.customers, (customer: Customer) => {
@@ -73,7 +76,17 @@ export class OrdersComponent implements OnInit {
     this.sortType = property;
     this.sortReverse = !this.sortReverse;
 
-    this.orders.sort(this.dynamicSort(property));
+    this.filteredOrders.sort(this.dynamicSort(property));
+  }
+
+  filterOrders(search: string) {
+    this.filteredOrders = this.orders.filter((o) =>
+      Object.keys(o).some((k) => {
+        if (typeof o[k] === "string") {
+          return o[k].toLowerCase().includes(search.toLowerCase());
+        }
+      })
+    );
   }
 }
 
