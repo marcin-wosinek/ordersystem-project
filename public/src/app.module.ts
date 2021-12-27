@@ -5,12 +5,13 @@ import { UpgradeModule } from "@angular/upgrade/static";
 import moduleName from "./app.module.ajs";
 
 import { HomeComponent } from "./home/home.component";
+import { CustomersTable } from "./customers/customers-table.component";
 import { CustomerService } from "./customers/customer.service";
 
 @NgModule({
   imports: [BrowserModule, UpgradeModule, HttpModule],
-  declarations: [HomeComponent],
-  entryComponents: [HomeComponent],
+  declarations: [HomeComponent, CustomersTable],
+  entryComponents: [HomeComponent, CustomersTable],
   providers: [CustomerService],
 })
 export class AppModule implements DoBootstrap {

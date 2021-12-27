@@ -11,7 +11,6 @@ import hashPrefixConfig from "./config.hashprefix";
 import routeProviderConfig from "./config.routes";
 import navigationComponent from "./navigation/navigation";
 import customersComponent from "./customers/customers";
-import customersTableComponent from "./customers/customers-table";
 import customerDetailComponent from "./customerDetail/customerDetail";
 import discountComponent from "./customerDetail/discount";
 import validateDateDirective from "./directives/validateDate";
@@ -31,7 +30,6 @@ angular
   .config(routeProviderConfig)
   .component("navigation", navigationComponent)
   .component("customers", customersComponent)
-  .component("customersTable", customersTableComponent)
   .component("customerDetail", customerDetailComponent)
   .component("discount", discountComponent)
   .component("orders", ordersComponent)
