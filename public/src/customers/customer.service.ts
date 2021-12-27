@@ -7,11 +7,13 @@ declare var angular: angular.IAngularStatic;
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
+import { Customer } from "./customer.interface";
+
 @Injectable()
 export class CustomerService {
   constructor(private http: Http) {}
 
-  getCustomers(): Observable<any> {
+  getCustomers(): Observable<Customer[]> {
     return this.http
       .get("/api/customers")
       .pipe(map((response: Response) => response.json()));

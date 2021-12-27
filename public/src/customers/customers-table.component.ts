@@ -3,6 +3,8 @@ import { downgradeComponent } from "@angular/upgrade/static";
 
 declare var angular: angular.IAngularStatic;
 
+import { Customer } from "./customer.interface";
+
 const template = require("./customers-table.html");
 
 @Component({
@@ -10,7 +12,7 @@ const template = require("./customers-table.html");
   template,
 })
 export class CustomersTable {
-  @Input() customers: any[];
+  @Input() customers: Customer[];
 
   constructor() {}
 }
