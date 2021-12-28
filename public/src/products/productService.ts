@@ -23,5 +23,3 @@ export class ProductService {
 }
 
 ProductService.$inject = ["$http"];
-
-export default ProductService;

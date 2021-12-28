@@ -8,11 +8,9 @@ import { Observable, forkJoin, from } from "rxjs";
 import { Customer } from "../customers/customer.interface";
 import { Order } from "../orders/order.interface";
 
-const template = require("./createOrder.html");
-
 @Component({
   selector: "create-order",
-  template,
+  templateUrl: "./createOrder.html",
 })
 export class CreateOrderComponent implements OnInit {
   public title: string = "Create Order";

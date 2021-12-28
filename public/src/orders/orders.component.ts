@@ -3,8 +3,6 @@ import { Component, OnInit, Inject } from "@angular/core";
 import * as _ from "lodash";
 import { Observable, forkJoin, from } from "rxjs";
 
-const template = require("./orders.html");
-
 import { CustomerService } from "../customers/customer.service";
 import { OrderService } from "./order.service";
 
@@ -13,17 +11,17 @@ import { Order } from "./order.interface";
 
 @Component({
   selector: "customers",
-  template,
+  templateUrl: "./orders.html",
   styles: ["tr a { cursor: pointer }"],
 })
 export class OrdersComponent implements OnInit {
-  public orders: Order[];
-  public filteredOrders: Order[];
-  public customers: Customer[];
-  public title: string = "Orders";
+  orders: Order[];
+  filteredOrders: Order[];
+  customers: Customer[];
+  title: string = "Orders";
 
-  public sortType: string;
-  private sortReverse: boolean = false;
+  sortType: string;
+  sortReverse: boolean = false;
 
   constructor(
     private orderService: OrderService,

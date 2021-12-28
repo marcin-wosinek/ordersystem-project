@@ -7,11 +7,9 @@ import { Customer } from "../customers/customer.interface";
 import { OrderService } from "../orders/order.service";
 import { AddressService } from "../shared/addressService";
 
-const template = require("./customerDetail.html");
-
 @Component({
   selector: "customer-detail",
-  template,
+  templateUrl: "./customerDetail.html",
 })
 export class CustomerDetailComponent implements OnInit {
   title: string = "Customer Detail";
