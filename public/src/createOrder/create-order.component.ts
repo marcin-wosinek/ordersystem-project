@@ -9,6 +9,7 @@ import { ProductService } from "../products/productService";
 import { Observable, forkJoin, from } from "rxjs";
 
 import { Customer } from "../customers/customer.interface";
+import { Order } from "../orders/order.interface";
 
 const template = require("./createOrder.html");
 
@@ -58,7 +59,7 @@ export class CreateOrderComponent implements OnInit {
       (x) => x.productId !== null
     );
 
-    return this.orderService.postOrder(this.newOrder).then(() => {
+    return this.orderService.postOrder(this.newOrder as Order).subscribe(() => {
       this.$location.path("/orders");
     });
   }
