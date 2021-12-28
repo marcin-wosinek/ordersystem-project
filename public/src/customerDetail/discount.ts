@@ -63,4 +63,3 @@ export class DiscountDirective extends UpgradeComponent {
     super("discount", elementRef, injector);
   }
 }
-

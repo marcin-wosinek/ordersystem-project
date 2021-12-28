@@ -1,7 +1,4 @@
 import { Component, Input, OnInit, Inject } from "@angular/core";
-import { downgradeComponent } from "@angular/upgrade/static";
-
-declare var angular: angular.IAngularStatic;
 
 import * as moment from "moment";
 
@@ -44,10 +41,3 @@ export class CustomerDetailComponent implements OnInit {
     this.customer.discount = $event.discount;
   }
 }
-
-angular.module("app").directive(
-  "customerDetail",
-  downgradeComponent({
-    component: CustomerDetailComponent,
-  }) as angular.IDirectiveFactory
-);

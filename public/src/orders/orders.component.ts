@@ -1,7 +1,4 @@
 import { Component, OnInit, Inject } from "@angular/core";
-import { downgradeComponent } from "@angular/upgrade/static";
-
-declare var angular: angular.IAngularStatic;
 
 import * as _ from "lodash";
 import { Observable, forkJoin, from } from "rxjs";
@@ -89,10 +86,3 @@ export class OrdersComponent implements OnInit {
     );
   }
 }
-
-angular.module("app").directive(
-  "orders",
-  downgradeComponent({
-    component: OrdersComponent,
-  }) as angular.IDirectiveFactory
-);

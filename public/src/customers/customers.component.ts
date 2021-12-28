@@ -1,7 +1,4 @@
 import { Component, Input, OnInit } from "@angular/core";
-import { downgradeComponent } from "@angular/upgrade/static";
-
-declare var angular: angular.IAngularStatic;
 
 import { Customer } from "./customer.interface";
 
@@ -25,10 +22,3 @@ export class CustomersComponent implements OnInit {
     });
   }
 }
-
-angular.module("app").directive(
-  "customers",
-  downgradeComponent({
-    component: CustomersComponent,
-  }) as angular.IDirectiveFactory
-);

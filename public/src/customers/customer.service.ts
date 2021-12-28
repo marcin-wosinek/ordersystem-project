@@ -1,8 +1,5 @@
 import { Injectable } from "@angular/core";
 import { Http, Response } from "@angular/http";
-import { downgradeInjectable } from "@angular/upgrade/static";
-
-declare var angular: angular.IAngularStatic;
 
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
@@ -33,7 +30,3 @@ export class CustomerService {
       .then((data) => data);
   }
 }
-
-angular
-  .module("app")
-  .factory("customerService", downgradeInjectable(CustomerService));

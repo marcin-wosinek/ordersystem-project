@@ -1,9 +1,6 @@
 import { Injectable } from "@angular/core";
 import { Http, Response } from "@angular/http";
 
-import { downgradeInjectable } from "@angular/upgrade/static";
-declare var angular: angular.IAngularStatic;
-
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
 
@@ -42,7 +39,3 @@ export class OrderService {
       .pipe(map((response) => response.json()));
   }
 }
-
-angular
-  .module("app")
-  .factory("orderService", downgradeInjectable(OrderService));

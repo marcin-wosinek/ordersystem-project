@@ -1,8 +1,24 @@
 import * as angular from "angular";
 import "angular-route";
+import "reflect-metadata";
 
 import "jquery";
 import "lodash";
+
+import {
+  downgradeInjectable,
+  downgradeComponent,
+} from "@angular/upgrade/static";
+
+// NG upgrade
+import { CreateOrderComponent } from "./createOrder/create-order.component";
+import { CustomerDetailComponent } from "./customerDetail/customer-detail.component";
+import { CustomerService } from "./customers/customer.service";
+import { CustomersComponent } from "./customers/customers.component";
+import { CustomersTableComponent } from "./customers/customers-table.component";
+import { HomeComponent } from "./home/home.component";
+import { OrderService } from "./orders/order.service";
+import { OrdersComponent } from "./orders/orders.component";
 
 import "bootstrap/dist/css/bootstrap.min.css";
 import "./styles/app.scss";
@@ -21,7 +37,7 @@ import "bootstrap/dist/css/bootstrap.min.css";
 import "font-awesome/css/font-awesome.min.css";
 import "./styles/app.scss";
 
-const MODULE_NAME = "app";
+export const MODULE_NAME = "app";
 
 angular
   .module(MODULE_NAME, ["ngRoute"])
@@ -34,6 +50,43 @@ angular
   .component("productDetail", productDetailComponent)
   .service("addressService", AddressService)
   .service("productService", ProductService)
-  .directive("validateDate", validateDateDirective);
-
-export default MODULE_NAME;
+  .directive("validateDate", validateDateDirective)
+  // NG upgrade
+  .directive(
+    "createOrder",
+    downgradeComponent({
+      component: CreateOrderComponent,
+    }) as angular.IDirectiveFactory
+  )
+  .directive(
+    "customerDetail",
+    downgradeComponent({
+      component: CustomerDetailComponent,
+    }) as angular.IDirectiveFactory
+  )
+  .directive(
+    "customers",
+    downgradeComponent({
+      component: CustomersComponent,
+    }) as angular.IDirectiveFactory
+  )
+  .directive(
+    "customersTable",
+    downgradeComponent({
+      component: CustomersTableComponent,
+    }) as angular.IDirectiveFactory
+  )
+  .directive(
+    "home",
+    downgradeComponent({
+      component: HomeComponent,
+    }) as angular.IDirectiveFactory
+  )
+  .directive(
+    "orders",
+    downgradeComponent({
+      component: OrdersComponent,
+    }) as angular.IDirectiveFactory
+  )
+  .factory("customerService", downgradeInjectable(CustomerService))
+  .factory("orderService", downgradeInjectable(OrderService));

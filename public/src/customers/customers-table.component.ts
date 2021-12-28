@@ -1,7 +1,4 @@
 import { Component, Input } from "@angular/core";
-import { downgradeComponent } from "@angular/upgrade/static";
-
-declare var angular: angular.IAngularStatic;
 
 import { Customer } from "./customer.interface";
 
@@ -16,10 +13,3 @@ export class CustomersTableComponent {
 
   constructor() {}
 }
-
-angular.module("app").directive(
-  "customersTable",
-  downgradeComponent({
-    component: CustomersTableComponent,
-  }) as angular.IDirectiveFactory
-);

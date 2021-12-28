@@ -1,7 +1,4 @@
 import { Component, Inject, OnInit } from "@angular/core";
-import { downgradeComponent } from "@angular/upgrade/static";
-
-declare var angular: angular.IAngularStatic;
 
 import { CustomerService } from "../customers/customer.service";
 import { OrderService } from "../orders/order.service";
@@ -64,10 +61,3 @@ export class CreateOrderComponent implements OnInit {
     });
   }
 }
-
-angular.module("app").directive(
-  "createOrder",
-  downgradeComponent({
-    component: CreateOrderComponent,
-  }) as angular.IDirectiveFactory
-);
