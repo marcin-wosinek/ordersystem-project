@@ -13,7 +13,6 @@ import navigationComponent from "./navigation/navigation";
 import customerDetailComponent from "./customerDetail/customerDetail";
 import discountComponent from "./customerDetail/discount";
 import validateDateDirective from "./directives/validateDate";
-import createOrderComponent from "./createOrder/createOrder";
 import orderDetailComponent from "./orderDetail/orderDetail";
 import productsComponent from "./products/products";
 import productDetailComponent from "./productDetail/productDetail";
@@ -37,7 +36,6 @@ angular
   .component("productDetail", productDetailComponent)
   .service("addressService", AddressService)
   .service("productService", ProductService)
-  .component("createOrder", createOrderComponent)
   .directive("validateDate", validateDateDirective);
 
 export default MODULE_NAME;

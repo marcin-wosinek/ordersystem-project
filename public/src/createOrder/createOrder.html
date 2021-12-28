@@ -6,13 +6,14 @@
 <div class="row">
     <div class="col-sm-12">
         <form novalidate name="createOrderForm" data-ng-submit="$ctrl.postOrder()">
-            <div class="form-group" data-ng-class="{ 'has-error' : createOrderForm.customer.$invalid && !createOrderForm.customer.$pristine }">
+          <!-- [ngClass]="{ 'has-error' : createOrderForm.customer.$invalid && !createOrderForm.customer.$pristine }" -->
+            <div class="form-group">
                 <label for="customer">Customer</label>
                 <select class="form-control" name="customer" data-ng-options="customer.id as customer.fullName for customer in $ctrl.customers"
                     data-ng-model="$ctrl.newOrder.customerId" required>
                     <option></option>
                 </select>
-                <p data-ng-show="createOrderForm.customer.$invalid && !createOrderForm.customer.$pristine" class="help-block">Customer is required.</p>
+                <p *ngIf="createOrderForm.customer.$invalid && !createOrderForm.customer.$pristine" class="help-block">Customer is required.</p>
             </div>
             <div class="row" data-ng-repeat="item in $ctrl.newOrder.items">
                 <div class="col-sm-4 form-group">
@@ -23,12 +24,15 @@
                         </select>
                     </label>
                 </div>
-                <div class="col-sm-4 end form-group" data-ng-class="{ 'has-error' : createOrderForm.product{{$index}}quantity.$invalid && !createOrderForm.product{{$index}}quantity.$pristine }">
+                <!--  [ngClass]="{ 'has-error' : createOrderForm.product[$index]quantity.$invalid && !createOrderForm.product[$index]quantity.$pristine }" -->
+                <div class="col-sm-4 end form-group">
                     <label>Quantity
                         <input name="product{{$index}}quantity" class="form-control" type="number" data-ng-model="item.quantity" data-ng-required="item.productId"
                         />
                     </label>
-                    <p data-ng-show="createOrderForm.product{{$index}}quantity.$invalid && !createOrderForm.product{{$index}}quantity.$pristine"
+
+                    <!-- createOrderForm.product[$index]quantity.$invalid && !createOrderForm.product[$index]quantity.$pristine -->
+                    <p *ngIf="true"
                         class="help-block">Quantity is required if you select a product.</p>
                 </div>
             </div>
