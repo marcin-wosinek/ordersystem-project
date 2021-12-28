@@ -4,7 +4,7 @@ module.exports = {
   devtool: "source-map",
   devServer: {
     static: {
-      directory: path.join(__dirname, "./src"),
+      directory: path.join(__dirname, "../src"),
     },
     port: 9000,
     proxy: {
@@ -12,4 +12,3 @@ module.exports = {
     },
   },
 };
-
