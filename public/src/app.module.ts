@@ -19,6 +19,7 @@ import { CreateOrderComponent } from "./createOrder/create-order.component";
 import { CustomerDetailComponent } from "./customerDetail/customer-detail.component";
 import { CustomerService } from "./customers/customer.service";
 import { OrderService } from "./orders/order.service";
+import { DiscountDirective } from "./customerDetail/discount";
 
 @NgModule({
   imports: [BrowserModule, UpgradeModule, HttpModule, FormsModule],
@@ -29,6 +30,7 @@ import { OrderService } from "./orders/order.service";
     OrdersComponent,
     CreateOrderComponent,
     CustomerDetailComponent,
+    DiscountDirective,
   ],
   entryComponents: [
     HomeComponent,
