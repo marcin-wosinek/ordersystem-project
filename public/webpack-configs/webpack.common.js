@@ -1,5 +1,7 @@
 const path = require("path");
 const HtmlWebpackPlugin = require("html-webpack-plugin");
+const BundleAnalyzerPlugin =
+  require("webpack-bundle-analyzer").BundleAnalyzerPlugin;
 const webpack = require("webpack");
 
 module.exports = {
@@ -42,6 +44,7 @@ module.exports = {
     new HtmlWebpackPlugin({
       template: "./src/index.html",
     }),
+    new BundleAnalyzerPlugin(),
     new webpack.optimize.CommonsChunkPlugin({
       name: "vendor",
       filename: "[name].bundle.js",
@@ -52,4 +55,3 @@ module.exports = {
     }),
   ],
 };
-
