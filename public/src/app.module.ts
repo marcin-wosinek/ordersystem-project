@@ -13,7 +13,7 @@ import { CustomersComponent } from "./customers/customers.component";
 import { CustomersTableComponent } from "./customers/customers-table.component";
 import { HomeComponent } from "./home/home.component";
 import { OrdersComponent } from "./orders/orders.component";
-import { CreateOrderComponent } from "./createOrder/createOrder.component";
+import { CreateOrderComponent } from "./createOrder/create-order.component";
 import { CustomerService } from "./customers/customer.service";
 import { OrderService } from "./orders/order.service";
 

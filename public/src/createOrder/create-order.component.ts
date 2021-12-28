@@ -26,7 +26,7 @@ export class CreateOrderComponent implements OnInit {
     private orderService: OrderService,
     private customerService: CustomerService,
     @Inject("$location") private $location: ng.ILocationService,
-    @Inject("productService") private productService: ProductService
+    private productService: ProductService
   ) {}
 
   public newOrder = {

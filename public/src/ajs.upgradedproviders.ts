@@ -1,3 +1,5 @@
+import { ProductService } from "./products/productService";
+
 export function locationServiceFactory(i: any) {
   return i.get("$location");
 }
@@ -13,7 +15,7 @@ export function productServiceFactory(i: any) {
 }
 
 export const productServiceProvider = {
-  provide: "productService",
+  provide: ProductService,
   useFactory: productServiceFactory,
   deps: ["$injector"],
 };
