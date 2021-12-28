@@ -1,5 +1,5 @@
 import { Injectable } from "@angular/core";
-import { Http, Response } from "@angular/http";
+import { HttpClient } from "@angular/common/http";
 
 import { Observable } from "rxjs";
 import { map } from "rxjs/operators";
@@ -8,12 +8,10 @@ import { Customer } from "./customer.interface";
 
 @Injectable()
 export class CustomerService {
-  constructor(private http: Http) {}
+  constructor(private http: HttpClient) {}
 
   getCustomers(): Observable<Customer[]> {
-    return this.http
-      .get("/api/customers")
-      .pipe(map((response: Response) => response.json()));
+    return this.http.get("/api/customers") as Observable<Customer[]>;
   }
 
   getCustomer(id): ng.IPromise<any> {

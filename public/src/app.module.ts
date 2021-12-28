@@ -1,6 +1,6 @@
 import { NgModule, DoBootstrap } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
-import { HttpModule } from "@angular/http";
+import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
 import { UpgradeModule } from "@angular/upgrade/static";
 import { MODULE_NAME } from "./app.module.ajs";
@@ -22,7 +22,7 @@ import { OrderService } from "./orders/order.service";
 import { DiscountDirective } from "./customerDetail/discount";
 
 @NgModule({
-  imports: [BrowserModule, UpgradeModule, HttpModule, FormsModule],
+  imports: [BrowserModule, UpgradeModule, HttpClientModule, FormsModule],
   declarations: [
     HomeComponent,
     CustomersTableComponent,
