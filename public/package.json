@@ -4,8 +4,8 @@
   "description": "This is the demo project for the Upgrading AngularJS course.",
   "main": "app.js",
   "scripts": {
-    "build:prod": "rimraf ../dist && npm run build -- --env='env=prod'",
-    "build": "webpack --bail --progress",
+    "build:prod": "rimraf ../dist && npm run build",
+    "build": "webpack --bail --progress --env='env=prod'",
     "dev": "webpack serve --env='env=dev'",
     "test": "karma start"
   },
@@ -28,8 +28,8 @@
     "jquery": "^2.2.4",
     "lodash": "4.17.4",
     "moment": "~2.17.1",
-    "rxjs": "^6.6.7",
-    "sass-loader": "^4.1.1"
+    "rxjs": "^7.5.1",
+    "sass-loader": "^12.4.0"
   },
   "devDependencies": {
     "@angular/compiler-cli": "^13.1.1",

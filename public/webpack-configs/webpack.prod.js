@@ -6,6 +6,7 @@ const extractCSS = new ExtractTextPlugin("vendor.css");
 const extractSCSS = new ExtractTextPlugin("app.css");
 
 module.exports = {
+  mode: "production",
   output: {
     filename: "[name].[hash].js",
   },
@@ -46,4 +47,3 @@ module.exports = {
     new webpack.optimize.UglifyJsPlugin(),
   ],
 };
-
