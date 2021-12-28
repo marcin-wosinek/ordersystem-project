@@ -1,11 +1,11 @@
-const webpack = require("webpack");
-const ExtractTextPlugin = require("extract-text-webpack-plugin");
-const OptimizeCSSAssetsPlugin = require("optimize-css-assets-webpack-plugin");
-
-const extractCSS = new ExtractTextPlugin("vendor.css");
-const extractSCSS = new ExtractTextPlugin("app.css");
+const webpack = require("webpack"),
+  path = require("path"),
+  { AngularWebpackPlugin } = require("@ngtools/webpack");
 
 module.exports = {
+  entry: {
+    app: "./src/main.aot.ts",
+  },
   mode: "production",
   output: {
     filename: "[name].[hash].js",
@@ -13,37 +13,15 @@ module.exports = {
   module: {
     rules: [
       {
-        test: /\.css?$/,
-        use: extractCSS.extract("css-loader"),
-      },
-      {
-        test: /\.scss?$/,
-        use: extractSCSS.extract([
-          "css-loader",
-          {
-            loader: "postcss-loader",
-            options: {
-              plugins: [require("autoprefixer")],
-            },
-          },
-          "sass-loader",
-        ]),
+        test: /\.ts?$/,
+        use: "@ngtools/webpack",
+        exclude: [/node_modules/, path.resolve(__dirname, "../src/main.ts")],
       },
     ],
   },
   plugins: [
-    extractCSS,
-    extractSCSS,
-    new OptimizeCSSAssetsPlugin({
-      assetNameRegExp: /\.css$/g,
-      cssProcessor: require("cssnano"),
-      cssProcessorOptions: {
-        discardComments: {
-          removeAll: true,
-        },
-        canPrint: true,
-      },
+    new AngularWebpackPlugin({
+      tsconfig: "./tsconfig.aot.json",
     }),
-    new webpack.optimize.UglifyJsPlugin(),
   ],
 };
