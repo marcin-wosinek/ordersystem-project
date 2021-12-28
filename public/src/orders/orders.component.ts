@@ -1,4 +1,4 @@
-import { Component, Input, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
 import { downgradeComponent } from "@angular/upgrade/static";
 
 declare var angular: angular.IAngularStatic;
