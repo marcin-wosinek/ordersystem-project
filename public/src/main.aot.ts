@@ -6,7 +6,8 @@ import { setAngularLib } from "@angular/upgrade/static";
 import { platformBrowser } from "@angular/platform-browser";
 import * as angular from "angular";
 
-import { AppModule } from "./app.module";
+// @ts-ignore
+import { AppModule } from "./app.module#ngfactory";
 
 setAngularLib(angular);
 enableProdMode();
