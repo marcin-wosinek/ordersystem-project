@@ -44,7 +44,6 @@ angular
   .config(hashPrefixConfig)
   .config(routeProviderConfig)
   .component("products", productsComponent)
-  .service("productService", ProductService)
   .directive("validateDate", validateDateDirective)
   // NG upgrade
   .directive(
@@ -109,4 +108,5 @@ angular
   )
   .factory("customerService", downgradeInjectable(CustomerService))
   .factory("orderService", downgradeInjectable(OrderService))
-  .factory("addressService", downgradeInjectable(AddressService));
+  .factory("addressService", downgradeInjectable(AddressService))
+  .factory("productService", downgradeInjectable(ProductService));

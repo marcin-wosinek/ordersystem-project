@@ -25,6 +25,7 @@ import { NavigationComponent } from "./navigation/navigation.component";
 import { OrderDetailComponent } from "./orderDetail/order-detail.component";
 import { ProductDetailComponent } from "./productDetail/product-detail.component";
 import { AddressService } from "./shared/addressService";
+import { ProductService } from "./products/productService";
 
 @NgModule({
   imports: [BrowserModule, UpgradeModule, HttpClientModule, FormsModule],
@@ -59,6 +60,7 @@ import { AddressService } from "./shared/addressService";
     productServiceProvider,
     qServiceProvider,
     AddressService,
+    ProductService,
   ],
 })
 export class AppModule implements DoBootstrap {

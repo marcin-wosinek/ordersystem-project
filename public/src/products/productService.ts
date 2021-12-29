@@ -1,25 +1,19 @@
+import { Injectable } from "@angular/core";
+import { HttpClient } from "@angular/common/http";
+
+@Injectable()
 export class ProductService {
-  $http: any;
+  constructor(private $http: HttpClient) {}
 
-  constructor($http) {
-    this.$http = $http;
-  }
-
-  getProducts(): any[] {
-    return this.$http.get("/api/products").then((response) => response.data);
+  getProducts(): Promise<any[]> {
+    return this.$http.get("/api/products").toPromise() as Promise<any[]>;
   }
 
   getProduct(id) {
-    return this.$http
-      .get(`/api/products/${id}`)
-      .then((response) => response.data);
+    return this.$http.get(`/api/products/${id}`).toPromise();
   }
 
   postProduct(product) {
-    return this.$http.post("/api/products", product).then(function (data) {
-      return data;
-    });
+    return this.$http.post("/api/products", product).toPromise;
   }
 }
-
-ProductService.$inject = ["$http"];
