@@ -19,6 +19,9 @@ module.exports = {
       },
     ],
   },
+  optimization: {
+    splitChunks: { chunks: "all" },
+  },
   plugins: [
     new AngularWebpackPlugin({
       tsconfig: "./tsconfig.aot.json",
