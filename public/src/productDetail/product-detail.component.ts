@@ -1,4 +1,5 @@
-import { Component, Input } from "@angular/core";
+import { Component } from "@angular/core";
+import { ActivatedRoute } from "@angular/router";
 
 import { Product } from "../products/product.interface";
 
@@ -8,7 +9,11 @@ import { Product } from "../products/product.interface";
 })
 export class ProductDetailComponent {
   title = "Product Detail";
-  @Input() product: Product;
+  product: Product;
 
-  constructor() {}
+  constructor(private route: ActivatedRoute) {
+    this.route.data.subscribe(({ product }: { product: Product }) => {
+      this.product = product;
+    });
+  }
 }

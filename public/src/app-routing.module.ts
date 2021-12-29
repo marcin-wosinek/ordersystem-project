@@ -18,6 +18,7 @@ import { ProductsComponent } from "./products/products.component";
 
 import { CustomerDetailResolver } from "./customerDetail/customer-detail.resolver";
 import { OrderDetailResolver } from "./orderDetail/order-detail.resolver";
+import { ProductDetailResolver } from "./productDetail/product-detail.resolver";
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -47,6 +48,7 @@ const routes: Routes = [
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     CustomerDetailResolver,
     OrderDetailResolver,
+    ProductDetailResolver,
   ],
 })
 export class AppRoutingModule {}
