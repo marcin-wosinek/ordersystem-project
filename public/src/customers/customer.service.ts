@@ -15,10 +15,7 @@ export class CustomerService {
   }
 
   getCustomer(id): ng.IPromise<any> {
-    return this.http
-      .get(`/api/customers/${id}`)
-      .toPromise()
-      .then((response: Response) => response.json());
+    return this.http.get(`/api/customers/${id}`).toPromise();
   }
 
   postCustomer(customer): ng.IPromise<any> {
