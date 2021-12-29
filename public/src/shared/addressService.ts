@@ -1,5 +1,8 @@
+import { Injectable } from "@angular/core";
+
 import { Customer } from "../customers/customer.interface";
 
+@Injectable()
 export class AddressService {
   constructor() {}
 
