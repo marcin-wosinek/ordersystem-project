@@ -23,6 +23,7 @@ import { OrderService } from "./orders/order.service";
 import { DiscountComponent } from "./customerDetail/discount";
 import { NavigationComponent } from "./navigation/navigation.component";
 import { OrderDetailComponent } from "./orderDetail/order-detail.component";
+import { ProductDetailComponent } from "./productDetail/product-detail.component";
 
 @NgModule({
   imports: [BrowserModule, UpgradeModule, HttpClientModule, FormsModule],
@@ -36,6 +37,7 @@ import { OrderDetailComponent } from "./orderDetail/order-detail.component";
     DiscountComponent,
     NavigationComponent,
     OrderDetailComponent,
+    ProductDetailComponent,
   ],
   entryComponents: [
     HomeComponent,
@@ -47,6 +49,7 @@ import { OrderDetailComponent } from "./orderDetail/order-detail.component";
     NavigationComponent,
     DiscountComponent,
     OrderDetailComponent,
+    ProductDetailComponent,
   ],
   providers: [
     CustomerService,

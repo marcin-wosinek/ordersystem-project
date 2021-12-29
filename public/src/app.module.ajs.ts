@@ -30,7 +30,7 @@ import { DiscountComponent } from "./customerDetail/discount";
 import validateDateDirective from "./directives/validateDate";
 import { OrderDetailComponent } from "./orderDetail/order-detail.component";
 import productsComponent from "./products/products";
-import productDetailComponent from "./productDetail/productDetail";
+import { ProductDetailComponent } from "./productDetail/product-detail.component";
 import { AddressService } from "./shared/addressService";
 import { ProductService } from "./products/productService";
 import "bootstrap/dist/css/bootstrap.min.css";
@@ -44,7 +44,6 @@ angular
   .config(hashPrefixConfig)
   .config(routeProviderConfig)
   .component("products", productsComponent)
-  .component("productDetail", productDetailComponent)
 
   .service("addressService", AddressService)
   .service("productService", ProductService)
@@ -102,6 +101,12 @@ angular
     "orderDetail",
     downgradeComponent({
       component: OrderDetailComponent,
+    }) as angular.IDirectiveFactory
+  )
+  .directive(
+    "productDetail",
+    downgradeComponent({
+      component: ProductDetailComponent,
     }) as angular.IDirectiveFactory
   )
   .factory("customerService", downgradeInjectable(CustomerService))

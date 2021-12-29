@@ -44,13 +44,15 @@ function routeProviderConfig($routeProvider) {
       },
     })
     .when("/products/:id", {
-      template: '<product-detail product="$resolve.product"></product-detail>',
+      template:
+        '<product-detail [product]="$resolve.product"></product-detail>',
       resolve: {
         product: [
           "$route",
           "productService",
           function ($route, productService) {
             var id = parseInt($route.current.params.id);
+            console.log("test??????????????????", id);
             return productService.getProduct(id);
           },
         ],
