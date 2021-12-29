@@ -8,7 +8,6 @@ const webpack = require("webpack");
 module.exports = {
   mode: "development",
   entry: {
-    ajs: "./src/app.module.ajs.ts",
     app: "./src/main.ts",
   },
   output: {

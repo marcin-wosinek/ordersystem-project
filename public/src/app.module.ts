@@ -1,11 +1,14 @@
+import "jquery";
+import "lodash";
+
+import "bootstrap/dist/css/bootstrap.min.css";
+import "font-awesome/css/font-awesome.min.css";
+import "./styles/app.scss";
+
 import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
-import { UpgradeModule } from "@angular/upgrade/static";
-import { MODULE_NAME } from "./app.module.ajs";
-
-import { locationServiceProvider } from "./ajs.upgradedproviders";
 
 import { AppRoutingModule } from "./app-routing.module";
 
@@ -27,13 +30,7 @@ import { ProductsComponent } from "./products/products.component";
 import { AppComponent } from "./app.component";
 
 @NgModule({
-  imports: [
-    BrowserModule,
-    UpgradeModule,
-    HttpClientModule,
-    FormsModule,
-    AppRoutingModule,
-  ],
+  imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
   declarations: [
     AppComponent,
     HomeComponent,
@@ -63,13 +60,7 @@ import { AppComponent } from "./app.component";
     ProductsComponent,
     AppComponent,
   ],
-  providers: [
-    CustomerService,
-    OrderService,
-    locationServiceProvider,
-    AddressService,
-    ProductService,
-  ],
+  providers: [CustomerService, OrderService, AddressService, ProductService],
 })
 export class AppModule {
   constructor() {}
