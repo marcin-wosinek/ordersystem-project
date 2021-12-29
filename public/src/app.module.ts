@@ -5,12 +5,7 @@ import { FormsModule } from "@angular/forms";
 import { UpgradeModule } from "@angular/upgrade/static";
 import { MODULE_NAME } from "./app.module.ajs";
 
-import {
-  addressServiceProvider,
-  locationServiceProvider,
-  productServiceProvider,
-  qServiceProvider,
-} from "./ajs.upgradedproviders";
+import { locationServiceProvider } from "./ajs.upgradedproviders";
 
 import { CustomersComponent } from "./customers/customers.component";
 import { CustomersTableComponent } from "./customers/customers-table.component";
@@ -60,8 +55,6 @@ import { ProductsComponent } from "./products/products.component";
     CustomerService,
     OrderService,
     locationServiceProvider,
-    productServiceProvider,
-    qServiceProvider,
     AddressService,
     ProductService,
   ],

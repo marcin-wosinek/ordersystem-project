@@ -27,7 +27,6 @@ import hashPrefixConfig from "./config.hashprefix";
 import routeProviderConfig from "./config.routes";
 import { NavigationComponent } from "./navigation/navigation.component";
 import { DiscountComponent } from "./customerDetail/discount";
-import validateDateDirective from "./directives/validateDate";
 import { OrderDetailComponent } from "./orderDetail/order-detail.component";
 import { ProductsComponent } from "./products/products.component";
 import { ProductDetailComponent } from "./productDetail/product-detail.component";
@@ -43,7 +42,6 @@ angular
   .module(MODULE_NAME, ["ngRoute"])
   .config(hashPrefixConfig)
   .config(routeProviderConfig)
-  .directive("validateDate", validateDateDirective)
   // NG upgrade
   .directive(
     "createOrder",
