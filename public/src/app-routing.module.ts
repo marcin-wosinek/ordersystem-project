@@ -17,6 +17,7 @@ import { ProductDetailComponent } from "./productDetail/product-detail.component
 import { ProductsComponent } from "./products/products.component";
 
 import { CustomerDetailResolver } from "./customerDetail/customer-detail.resolver";
+import { OrderDetailResolver } from "./orderDetail/order-detail.resolver";
 
 const routes: Routes = [
   { path: "home", component: HomeComponent },
@@ -27,7 +28,11 @@ const routes: Routes = [
     resolve: { customer: CustomerDetailResolver },
   },
   { path: "orders/create", component: CreateOrderComponent },
-  { path: "orders/:orderId", component: OrderDetailComponent },
+  {
+    path: "orders/:orderId",
+    component: OrderDetailComponent,
+    resolve: { order: OrderDetailResolver },
+  },
   { path: "orders", component: OrdersComponent },
   { path: "products", component: ProductsComponent },
   { path: "products/:productId", component: ProductDetailComponent },
@@ -41,6 +46,7 @@ const routes: Routes = [
     { provide: APP_BASE_HREF, useValue: "!" },
     { provide: LocationStrategy, useClass: HashLocationStrategy },
     CustomerDetailResolver,
+    OrderDetailResolver,
   ],
 })
 export class AppRoutingModule {}

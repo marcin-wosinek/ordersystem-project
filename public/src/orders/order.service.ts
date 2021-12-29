@@ -14,8 +14,8 @@ export class OrderService {
     return this.http.get("/api/orders").toPromise() as Promise<Order[]>;
   }
 
-  getOrder(id): Promise<Order[]> {
-    return this.http.get(`/api/orders/${id}`).toPromise() as Promise<Order[]>;
+  getOrder(id): Observable<Order> {
+    return this.http.get(`/api/orders/${id}`) as Observable<Order>;
   }
 
   getOrdersByCustomer(customerId): Promise<Order[]> {

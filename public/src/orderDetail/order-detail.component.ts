@@ -1,4 +1,6 @@
-import { Component, Inject, Input, OnInit } from "@angular/core";
+import { Component, Inject, OnInit } from "@angular/core";
+
+import { ActivatedRoute } from "@angular/router";
 
 //Don't forget to import lodash
 import * as _ from "lodash";
@@ -18,13 +20,18 @@ import { Observable, forkJoin, from } from "rxjs";
 export class OrderDetailComponent implements OnInit {
   title: string = "Order Detail";
 
-  @Input() order: Order;
+  order: Order;
   customer: Customer = {} as Customer;
 
   constructor(
     private productService: ProductService,
-    private customerService: CustomerService
-  ) {}
+    private customerService: CustomerService,
+    private route: ActivatedRoute
+  ) {
+    this.route.data.subscribe(({ order }: { order: Order }) => {
+      this.order = order;
+    });
+  }
 
   ngOnInit() {
     forkJoin([
