@@ -19,7 +19,7 @@ import { CreateOrderComponent } from "./createOrder/create-order.component";
 import { CustomerDetailComponent } from "./customerDetail/customer-detail.component";
 import { CustomerService } from "./customers/customer.service";
 import { OrderService } from "./orders/order.service";
-import { DiscountDirective } from "./customerDetail/discount";
+import { DiscountComponent } from "./customerDetail/discount";
 import { NavigationComponent } from "./navigation/navigation.component";
 
 @NgModule({
@@ -31,7 +31,7 @@ import { NavigationComponent } from "./navigation/navigation.component";
     OrdersComponent,
     CreateOrderComponent,
     CustomerDetailComponent,
-    DiscountDirective,
+    DiscountComponent,
     NavigationComponent,
   ],
   entryComponents: [
@@ -42,6 +42,7 @@ import { NavigationComponent } from "./navigation/navigation.component";
     CreateOrderComponent,
     CustomerDetailComponent,
     NavigationComponent,
+    DiscountComponent,
   ],
   providers: [
     CustomerService,

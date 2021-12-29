@@ -26,7 +26,7 @@ import "./styles/app.scss";
 import hashPrefixConfig from "./config.hashprefix";
 import routeProviderConfig from "./config.routes";
 import { NavigationComponent } from "./navigation/navigation.component";
-import { discountComponent } from "./customerDetail/discount";
+import { DiscountComponent } from "./customerDetail/discount";
 import validateDateDirective from "./directives/validateDate";
 import orderDetailComponent from "./orderDetail/orderDetail";
 import productsComponent from "./products/products";
@@ -43,7 +43,6 @@ angular
   .module(MODULE_NAME, ["ngRoute"])
   .config(hashPrefixConfig)
   .config(routeProviderConfig)
-  .component("discount", discountComponent)
   .component("orderDetail", orderDetailComponent)
   .component("products", productsComponent)
   .component("productDetail", productDetailComponent)
@@ -91,6 +90,12 @@ angular
     "navigation",
     downgradeComponent({
       component: NavigationComponent,
+    }) as angular.IDirectiveFactory
+  )
+  .directive(
+    "discount",
+    downgradeComponent({
+      component: DiscountComponent,
     }) as angular.IDirectiveFactory
   )
   .factory("customerService", downgradeInjectable(CustomerService))

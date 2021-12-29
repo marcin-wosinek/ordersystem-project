@@ -35,7 +35,7 @@ export class CustomerDetailComponent implements OnInit {
       });
   }
 
-  updateDiscount($event) {
-    this.customer.discount = $event.discount;
+  updateDiscount(discount) {
+    this.customer.discount = discount;
   }
 }

@@ -1,39 +1,19 @@
-import {
-  Directive,
-  ElementRef,
-  Injector,
-  Input,
-  Output,
-  EventEmitter,
-} from "@angular/core";
-import { UpgradeComponent } from "@angular/upgrade/static";
+import { Component, Input, Output, EventEmitter } from "@angular/core";
 
-const template = require("./discount.html");
+import { Discount } from "./discount.interface";
 
-export const discountComponent = {
-  template: template,
-  bindings: {
-    customerDiscount: "<",
-    update: "&",
-  },
-  controller: discountComponentController,
-};
+@Component({
+  selector: "discount",
+  templateUrl: "./discount.html",
+})
+export class DiscountComponent {
+  @Input() customerDiscount: Discount;
+  @Output() update: EventEmitter<Discount> = new EventEmitter<Discount>();
 
-function discountComponentController() {
-  var vm = this;
+  editDiscount: boolean = false;
+  selectedDiscount: Discount;
 
-  vm.editDiscount = false;
-
-  vm.editDiscountType = function () {
-    vm.editDiscount = true;
-  };
-
-  vm.updateDiscountType = function () {
-    vm.update({ discount: vm.selectedDiscount });
-    vm.editDiscount = false;
-  };
-
-  vm.discounts = [
+  discounts: Discount[] = [
     {
       discountId: 1,
       discountPercent: 10,
@@ -50,16 +30,17 @@ function discountComponentController() {
       discountName: "Famous Drummer",
     },
   ];
-}
 
-@Directive({
-  selector: "discount",
-})
-export class DiscountDirective extends UpgradeComponent {
-  @Input() customerDiscount: {};
-  @Output() update: EventEmitter<{}>;
+  constructor() {}
 
-  constructor(elementRef: ElementRef, injector: Injector) {
-    super("discount", elementRef, injector);
+  editDiscountType() {
+    this.editDiscount = true;
+  }
+
+  updateDiscountType() {
+    console.log("this.selectedDiscount", this.selectedDiscount);
+
+    this.update.emit(this.selectedDiscount);
+    this.editDiscount = false;
   }
 }
