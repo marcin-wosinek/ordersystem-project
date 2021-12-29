@@ -84,7 +84,7 @@
       <tbody>
         <tr *ngFor="let order of filteredOrders">
           <td>
-            <a [routerLink]="['orders', order.id]">{{ order.id }}</a>
+            <a [routerLink]="['/orders', order.id]">{{ order.id }}</a>
           </td>
           <td>{{ order.customerName }}</td>
           <td>{{ order.totalItems }}</td>

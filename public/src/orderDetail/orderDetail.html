@@ -25,7 +25,7 @@
       <tbody>
         <tr *ngFor="let item of order.items">
           <td>
-            <a [routerLink]="['products', item.productId]">{{
+            <a [routerLink]="['/products', item.productId]">{{
               item.productId
             }}</a>
           </td>

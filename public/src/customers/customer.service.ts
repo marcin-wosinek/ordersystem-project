@@ -18,7 +18,7 @@ export class CustomerService {
     return this.http.get(`/api/customers/${id}`) as Observable<Customer>;
   }
 
-  postCustomer(customer): ng.IPromise<any> {
+  postCustomer(customer): Promise<any> {
     return this.http
       .post("/api/customers", customer)
       .toPromise()
