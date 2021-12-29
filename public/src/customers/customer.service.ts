@@ -14,8 +14,8 @@ export class CustomerService {
     return this.http.get("/api/customers") as Observable<Customer[]>;
   }
 
-  getCustomer(id): ng.IPromise<any> {
-    return this.http.get(`/api/customers/${id}`).toPromise();
+  getCustomer(id): Observable<Customer> {
+    return this.http.get(`/api/customers/${id}`) as Observable<Customer>;
   }
 
   postCustomer(customer): ng.IPromise<any> {

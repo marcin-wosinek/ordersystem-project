@@ -9,6 +9,7 @@ import {
   addressServiceProvider,
   locationServiceProvider,
   productServiceProvider,
+  qServiceProvider,
 } from "./ajs.upgradedproviders";
 
 import { CustomersComponent } from "./customers/customers.component";
@@ -21,6 +22,7 @@ import { CustomerService } from "./customers/customer.service";
 import { OrderService } from "./orders/order.service";
 import { DiscountComponent } from "./customerDetail/discount";
 import { NavigationComponent } from "./navigation/navigation.component";
+import { OrderDetailComponent } from "./orderDetail/order-detail.component";
 
 @NgModule({
   imports: [BrowserModule, UpgradeModule, HttpClientModule, FormsModule],
@@ -33,6 +35,7 @@ import { NavigationComponent } from "./navigation/navigation.component";
     CustomerDetailComponent,
     DiscountComponent,
     NavigationComponent,
+    OrderDetailComponent,
   ],
   entryComponents: [
     HomeComponent,
@@ -43,12 +46,14 @@ import { NavigationComponent } from "./navigation/navigation.component";
     CustomerDetailComponent,
     NavigationComponent,
     DiscountComponent,
+    OrderDetailComponent,
   ],
   providers: [
     CustomerService,
     OrderService,
     locationServiceProvider,
     productServiceProvider,
+    qServiceProvider,
     addressServiceProvider,
   ],
 })

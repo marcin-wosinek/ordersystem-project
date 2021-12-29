@@ -10,7 +10,8 @@ export interface Order {
     {
       quantity: number;
       productId: number;
+      productName: string;
+      itemPrice: number;
     }
   ];
 }
-

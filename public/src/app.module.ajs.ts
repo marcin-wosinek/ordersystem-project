@@ -28,7 +28,7 @@ import routeProviderConfig from "./config.routes";
 import { NavigationComponent } from "./navigation/navigation.component";
 import { DiscountComponent } from "./customerDetail/discount";
 import validateDateDirective from "./directives/validateDate";
-import orderDetailComponent from "./orderDetail/orderDetail";
+import { OrderDetailComponent } from "./orderDetail/order-detail.component";
 import productsComponent from "./products/products";
 import productDetailComponent from "./productDetail/productDetail";
 import { AddressService } from "./shared/addressService";
@@ -43,9 +43,9 @@ angular
   .module(MODULE_NAME, ["ngRoute"])
   .config(hashPrefixConfig)
   .config(routeProviderConfig)
-  .component("orderDetail", orderDetailComponent)
   .component("products", productsComponent)
   .component("productDetail", productDetailComponent)
+
   .service("addressService", AddressService)
   .service("productService", ProductService)
   .directive("validateDate", validateDateDirective)
@@ -96,6 +96,12 @@ angular
     "discount",
     downgradeComponent({
       component: DiscountComponent,
+    }) as angular.IDirectiveFactory
+  )
+  .directive(
+    "orderDetail",
+    downgradeComponent({
+      component: OrderDetailComponent,
     }) as angular.IDirectiveFactory
   )
   .factory("customerService", downgradeInjectable(CustomerService))

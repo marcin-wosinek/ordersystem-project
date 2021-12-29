@@ -11,6 +11,16 @@ export const locationServiceProvider = {
   deps: ["$injector"],
 };
 
+export function qServiceFactory(i: any) {
+  return i.get("$q");
+}
+
+export const qServiceProvider = {
+  provide: "$q",
+  useFactory: qServiceFactory,
+  deps: ["$injector"],
+};
+
 export function productServiceFactory(i: any) {
   return i.get("productService");
 }

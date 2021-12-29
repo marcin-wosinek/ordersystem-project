@@ -25,13 +25,13 @@ function routeProviderConfig($routeProvider) {
           "customerService",
           function ($route, customerService) {
             var id = parseInt($route.current.params.id);
-            return customerService.getCustomer(id);
+            return customerService.getCustomer(id).toPromise();
           },
         ],
       },
     })
     .when("/orders/:id", {
-      template: '<order-detail order="$resolve.order"></order-detail>',
+      template: '<order-detail [order]="$resolve.order"></order-detail>',
       resolve: {
         order: [
           "$route",
