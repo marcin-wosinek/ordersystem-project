@@ -26,6 +26,7 @@ import { OrderDetailComponent } from "./orderDetail/order-detail.component";
 import { ProductDetailComponent } from "./productDetail/product-detail.component";
 import { AddressService } from "./shared/addressService";
 import { ProductService } from "./products/productService";
+import { ProductsComponent } from "./products/products.component";
 
 @NgModule({
   imports: [BrowserModule, UpgradeModule, HttpClientModule, FormsModule],
@@ -40,6 +41,7 @@ import { ProductService } from "./products/productService";
     NavigationComponent,
     OrderDetailComponent,
     ProductDetailComponent,
+    ProductsComponent,
   ],
   entryComponents: [
     HomeComponent,
@@ -52,6 +54,7 @@ import { ProductService } from "./products/productService";
     DiscountComponent,
     OrderDetailComponent,
     ProductDetailComponent,
+    ProductsComponent,
   ],
   providers: [
     CustomerService,

@@ -52,7 +52,6 @@ function routeProviderConfig($routeProvider) {
           "productService",
           function ($route, productService) {
             var id = parseInt($route.current.params.id);
-            console.log("test??????????????????", id);
             return productService.getProduct(id);
           },
         ],
