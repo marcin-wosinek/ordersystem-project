@@ -36,7 +36,11 @@ const routes: Routes = [
   },
   { path: "orders", component: OrdersComponent },
   { path: "products", component: ProductsComponent },
-  { path: "products/:productId", component: ProductDetailComponent },
+  {
+    path: "products/:productId",
+    component: ProductDetailComponent,
+    resolve: { product: ProductDetailResolver },
+  },
   { path: "", redirectTo: "/home", pathMatch: "full" },
 ];
 
