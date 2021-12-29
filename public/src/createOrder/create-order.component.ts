@@ -4,6 +4,7 @@ import { CustomerService } from "../customers/customer.service";
 import { OrderService } from "../orders/order.service";
 import { ProductService } from "../products/productService";
 import { Observable, forkJoin, from } from "rxjs";
+import { Router } from "@angular/router";
 
 import { Customer } from "../customers/customer.interface";
 import { Order } from "../orders/order.interface";
@@ -21,7 +22,7 @@ export class CreateOrderComponent implements OnInit {
   constructor(
     private orderService: OrderService,
     private customerService: CustomerService,
-    @Inject("$location") private $location: ng.ILocationService,
+    private router: Router,
     private productService: ProductService
   ) {}
 
@@ -55,7 +56,7 @@ export class CreateOrderComponent implements OnInit {
     );
 
     return this.orderService.postOrder(this.newOrder as Order).subscribe(() => {
-      this.$location.path("/orders");
+      this.router.navigate(["/orders"]);
     });
   }
 }

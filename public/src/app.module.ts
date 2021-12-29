@@ -1,4 +1,4 @@
-import { NgModule, DoBootstrap } from "@angular/core";
+import { NgModule } from "@angular/core";
 import { BrowserModule } from "@angular/platform-browser";
 import { HttpClientModule } from "@angular/common/http";
 import { FormsModule } from "@angular/forms";
@@ -6,6 +6,8 @@ import { UpgradeModule } from "@angular/upgrade/static";
 import { MODULE_NAME } from "./app.module.ajs";
 
 import { locationServiceProvider } from "./ajs.upgradedproviders";
+
+import { AppRoutingModule } from "./app-routing.module";
 
 import { CustomersComponent } from "./customers/customers.component";
 import { CustomersTableComponent } from "./customers/customers-table.component";
@@ -22,10 +24,18 @@ import { ProductDetailComponent } from "./productDetail/product-detail.component
 import { AddressService } from "./shared/addressService";
 import { ProductService } from "./products/productService";
 import { ProductsComponent } from "./products/products.component";
+import { AppComponent } from "./app.component";
 
 @NgModule({
-  imports: [BrowserModule, UpgradeModule, HttpClientModule, FormsModule],
+  imports: [
+    BrowserModule,
+    UpgradeModule,
+    HttpClientModule,
+    FormsModule,
+    AppRoutingModule,
+  ],
   declarations: [
+    AppComponent,
     HomeComponent,
     CustomersTableComponent,
     CustomersComponent,
@@ -38,6 +48,7 @@ import { ProductsComponent } from "./products/products.component";
     ProductDetailComponent,
     ProductsComponent,
   ],
+  bootstrap: [AppComponent],
   entryComponents: [
     HomeComponent,
     CustomersTableComponent,
@@ -50,6 +61,7 @@ import { ProductsComponent } from "./products/products.component";
     OrderDetailComponent,
     ProductDetailComponent,
     ProductsComponent,
+    AppComponent,
   ],
   providers: [
     CustomerService,
@@ -59,12 +71,6 @@ import { ProductsComponent } from "./products/products.component";
     ProductService,
   ],
 })
-export class AppModule implements DoBootstrap {
-  constructor(private upgrade: UpgradeModule) {}
-
-  ngDoBootstrap() {
-    this.upgrade.bootstrap(document.documentElement, [MODULE_NAME], {
-      strictDi: true,
-    });
-  }
+export class AppModule {
+  constructor() {}
 }

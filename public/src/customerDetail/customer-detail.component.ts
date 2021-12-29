@@ -1,4 +1,6 @@
-import { Component, Input, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, Inject } from "@angular/core";
+
+import { ActivatedRoute } from "@angular/router";
 
 import * as moment from "moment";
 
@@ -13,15 +15,20 @@ import { AddressService } from "../shared/addressService";
 })
 export class CustomerDetailComponent implements OnInit {
   title: string = "Customer Detail";
-  @Input() customer: Customer;
+  customer: Customer;
 
   address: any;
   orders: any[];
 
   constructor(
     private addressService: AddressService,
-    private orderService: OrderService
-  ) {}
+    private orderService: OrderService,
+    private route: ActivatedRoute
+  ) {
+    this.route.data.subscribe(({ customer }: { customer: Customer }) => {
+      this.customer = customer;
+    });
+  }
 
   ngOnInit() {
     this.address = this.addressService.getFullAddress(this.customer);

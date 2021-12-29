@@ -1,4 +1,5 @@
 import { Component, OnInit, Inject } from "@angular/core";
+import { Router } from "@angular/router";
 
 import * as _ from "lodash";
 import { Observable, forkJoin, from } from "rxjs";
@@ -26,7 +27,7 @@ export class OrdersComponent implements OnInit {
   constructor(
     private orderService: OrderService,
     private customerService: CustomerService,
-    @Inject("$location") private $location: any
+    private router: Router
   ) {}
 
   ngOnInit() {
@@ -49,7 +50,7 @@ export class OrdersComponent implements OnInit {
   }
 
   goToCreateOrder() {
-    this.$location.path("/orders/create");
+    this.router.navigate(["orders/create"]);
   }
 
   dynamicSort(property) {
