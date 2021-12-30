@@ -26,37 +26,23 @@ import { ProductsComponent } from './products/products.component';
 import { AppComponent } from './app.component';
 
 @NgModule({
-  imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
-  declarations: [
-    AppComponent,
-    HomeComponent,
-    CustomersTableComponent,
-    CustomersComponent,
-    OrdersComponent,
-    CreateOrderComponent,
-    CustomerDetailComponent,
-    DiscountComponent,
-    NavigationComponent,
-    OrderDetailComponent,
-    ProductDetailComponent,
-    ProductsComponent,
-  ],
-  bootstrap: [AppComponent],
-  entryComponents: [
-    HomeComponent,
-    CustomersTableComponent,
-    CustomersComponent,
-    OrdersComponent,
-    CreateOrderComponent,
-    CustomerDetailComponent,
-    NavigationComponent,
-    DiscountComponent,
-    OrderDetailComponent,
-    ProductDetailComponent,
-    ProductsComponent,
-    AppComponent,
-  ],
-  providers: [CustomerService, OrderService, AddressService, ProductService],
+    imports: [BrowserModule, HttpClientModule, FormsModule, AppRoutingModule],
+    declarations: [
+        AppComponent,
+        HomeComponent,
+        CustomersTableComponent,
+        CustomersComponent,
+        OrdersComponent,
+        CreateOrderComponent,
+        CustomerDetailComponent,
+        DiscountComponent,
+        NavigationComponent,
+        OrderDetailComponent,
+        ProductDetailComponent,
+        ProductsComponent,
+    ],
+    bootstrap: [AppComponent],
+    providers: [CustomerService, OrderService, AddressService, ProductService]
 })
 export class AppModule {
   constructor() {}
