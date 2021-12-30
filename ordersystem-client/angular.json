@@ -27,7 +27,11 @@
             "tsConfig": "tsconfig.app.json",
             "inlineStyleLanguage": "scss",
             "assets": ["src/favicon.ico", "src/assets"],
-            "styles": ["src/styles/app.scss"],
+            "styles": [
+              "src/styles/app.scss",
+              "node_modules/bootstrap/dist/css/bootstrap.min.css",
+              "node_modules/font-awesome/css/font-awesome.min.css"
+            ],
             "scripts": []
           },
           "configurations": {
@@ -70,7 +74,8 @@
               "browserTarget": "ordersystem-client:build:production"
             },
             "development": {
-              "browserTarget": "ordersystem-client:build:development"
+              "browserTarget": "ordersystem-client:build:development",
+              "proxyConfig": "proxy.conf.json"
             }
           },
           "defaultConfiguration": "development"

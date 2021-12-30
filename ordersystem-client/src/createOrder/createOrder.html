@@ -8,7 +8,7 @@
     <form novalidate #createOrderForm="ngForm" (ngSubmit)="postOrder()">
       <div
         class="form-group"
-        [ngClass]="{ 'has-error': customerId.$invalid && customerId.dirty }"
+        [ngClass]="{ 'has-error': customerId.invalid && customerId.dirty }"
       >
         <label for="customer">Customer</label>
         <select
@@ -54,7 +54,7 @@
               type="number"
               [(ngModel)]="item.quantity"
               #quantity="ngModel"
-              [required]="item.productId"
+              [required]="!!item.productId"
             />
           </label>
 

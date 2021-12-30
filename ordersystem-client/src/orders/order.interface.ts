@@ -6,12 +6,10 @@ export interface Order {
   totalCost: number;
   totalSale: number;
   totalItems: number;
-  items: [
-    {
-      quantity: number;
-      productId: number;
-      productName: string;
-      itemPrice: number;
-    }
-  ];
+  items: {
+    quantity: number;
+    productId: number;
+    productName: string;
+    itemPrice: number;
+  }[];
 }

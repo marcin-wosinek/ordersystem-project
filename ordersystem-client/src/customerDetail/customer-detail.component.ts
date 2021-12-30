@@ -1,20 +1,20 @@
-import { Component, OnInit, Inject } from "@angular/core";
+import { Component, OnInit, Inject } from '@angular/core';
 
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 
-import * as moment from "moment";
+import * as moment from 'moment';
 
-import { Customer } from "../customers/customer.interface";
+import { Customer } from '../customers/customer.interface';
 
-import { OrderService } from "../orders/order.service";
-import { AddressService } from "../shared/addressService";
+import { OrderService } from '../orders/order.service';
+import { AddressService } from '../shared/addressService';
 
 @Component({
-  selector: "customer-detail",
-  templateUrl: "./customerDetail.html",
+  selector: 'customer-detail',
+  templateUrl: './customerDetail.html',
 })
 export class CustomerDetailComponent implements OnInit {
-  title: string = "Customer Detail";
+  title: string = 'Customer Detail';
   customer: Customer;
 
   address: any;
@@ -25,7 +25,7 @@ export class CustomerDetailComponent implements OnInit {
     private orderService: OrderService,
     private route: ActivatedRoute
   ) {
-    this.route.data.subscribe(({ customer }: { customer: Customer }) => {
+    this.route.data.subscribe(({ customer }) => {
       this.customer = customer;
     });
   }
@@ -37,7 +37,7 @@ export class CustomerDetailComponent implements OnInit {
       .then((data: any) => {
         this.orders = data;
         this.orders.forEach((order) => {
-          order.orderDate = moment(order.orderDate).format("MM/DD/YYYY");
+          order.orderDate = moment(order.orderDate).format('MM/DD/YYYY');
         });
       });
   }

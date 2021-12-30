@@ -1,20 +1,20 @@
-import { Injectable } from "@angular/core";
+import { Injectable } from '@angular/core';
 
 import {
   Router,
   Resolve,
   RouterStateSnapshot,
   ActivatedRouteSnapshot,
-} from "@angular/router";
+} from '@angular/router';
 
-import { Observable } from "rxjs";
-import { map, take } from "rxjs/operators";
+import { Observable } from 'rxjs';
+import { map, take } from 'rxjs/operators';
 
-import { Customer } from "../customers/customer.interface";
-import { CustomerService } from "../customers/customer.service";
+import { Customer } from '../customers/customer.interface';
+import { CustomerService } from '../customers/customer.service';
 
 @Injectable()
-export class CustomerDetailResolver implements Resolve<Customer> {
+export class CustomerDetailResolver implements Resolve<Customer | null> {
   constructor(
     private customerService: CustomerService,
     private router: Router
@@ -23,8 +23,8 @@ export class CustomerDetailResolver implements Resolve<Customer> {
   resolve(
     route: ActivatedRouteSnapshot,
     _state: RouterStateSnapshot
-  ): Observable<Customer> {
-    let id = route.paramMap.get("customerId");
+  ): Observable<Customer | null> {
+    let id = route.paramMap.get('customerId');
 
     return this.customerService.getCustomer(id).pipe(
       take(1),
@@ -32,7 +32,7 @@ export class CustomerDetailResolver implements Resolve<Customer> {
         if (customer) {
           return customer;
         } else {
-          this.router.navigate(["/customers"]);
+          this.router.navigate(['/customers']);
 
           return null;
         }

@@ -1,24 +1,24 @@
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, Inject, OnInit } from '@angular/core';
 
-import { ActivatedRoute } from "@angular/router";
+import { ActivatedRoute } from '@angular/router';
 
 //Don't forget to import lodash
-import * as _ from "lodash";
+import * as _ from 'lodash';
 
-import { CustomerService } from "../customers/customer.service";
-import { ProductService } from "../products/productService";
-import { Order } from "../orders/order.interface";
-import { Customer } from "../customers/customer.interface";
-import { Product } from "../products/product.interface";
+import { CustomerService } from '../customers/customer.service';
+import { ProductService } from '../products/productService';
+import { Order } from '../orders/order.interface';
+import { Customer } from '../customers/customer.interface';
+import { Product } from '../products/product.interface';
 
-import { Observable, forkJoin, from } from "rxjs";
+import { Observable, forkJoin, from } from 'rxjs';
 
 @Component({
-  selector: "order-details",
-  templateUrl: "./orderDetail.html",
+  selector: 'order-details',
+  templateUrl: './orderDetail.html',
 })
 export class OrderDetailComponent implements OnInit {
-  title: string = "Order Detail";
+  title: string = 'Order Detail';
 
   order: Order;
   customer: Customer = {} as Customer;
@@ -28,7 +28,7 @@ export class OrderDetailComponent implements OnInit {
     private customerService: CustomerService,
     private route: ActivatedRoute
   ) {
-    this.route.data.subscribe(({ order }: { order: Order }) => {
+    this.route.data.subscribe(({ order }) => {
       this.order = order;
     });
   }

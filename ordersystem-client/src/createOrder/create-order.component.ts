@@ -1,20 +1,20 @@
-import { Component, Inject, OnInit } from "@angular/core";
+import { Component, Inject, OnInit } from '@angular/core';
 
-import { CustomerService } from "../customers/customer.service";
-import { OrderService } from "../orders/order.service";
-import { ProductService } from "../products/productService";
-import { Observable, forkJoin, from } from "rxjs";
-import { Router } from "@angular/router";
+import { CustomerService } from '../customers/customer.service';
+import { OrderService } from '../orders/order.service';
+import { ProductService } from '../products/productService';
+import { Observable, forkJoin, from } from 'rxjs';
+import { Router } from '@angular/router';
 
-import { Customer } from "../customers/customer.interface";
-import { Order } from "../orders/order.interface";
+import { Customer } from '../customers/customer.interface';
+import { Order } from '../orders/order.interface';
 
 @Component({
-  selector: "create-order",
-  templateUrl: "./createOrder.html",
+  selector: 'create-order',
+  templateUrl: './createOrder.html',
 })
 export class CreateOrderComponent implements OnInit {
-  public title: string = "Create Order";
+  public title: string = 'Create Order';
 
   public customers: Customer[];
   public products: any[];
@@ -32,13 +32,17 @@ export class CreateOrderComponent implements OnInit {
       {
         productId: null,
         quantity: null,
+        productName: null,
+        itemPrice: null,
       },
       {
         productId: null,
         quantity: null,
+        productName: null,
+        itemPrice: null,
       },
     ],
-  };
+  } as unknown as Order;
 
   ngOnInit() {
     let productData = from(this.productService.getProducts());
@@ -56,7 +60,7 @@ export class CreateOrderComponent implements OnInit {
     );
 
     return this.orderService.postOrder(this.newOrder as Order).subscribe(() => {
-      this.router.navigate(["/orders"]);
+      this.router.navigate(['/orders']);
     });
   }
 }
